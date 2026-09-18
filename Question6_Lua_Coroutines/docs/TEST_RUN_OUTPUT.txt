@@ -1,0 +1,7 @@
+ADAPTIVE TRAFFIC CONTROL TESTS
+PASS: High congestion receives the next green period when no road is starved.
+PASS: A road at the starvation threshold is force-selected despite a busier competing road.
+PASS: Scheduling logic works with queues below the green discharge capacity.
+PASS: Coroutine transitions to dead only after its function returns.
+PASS: Dead coroutine is not resumed again.
+5/5 tests passed.

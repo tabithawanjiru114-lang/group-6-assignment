@@ -1,0 +1,24 @@
+ADAPTIVE NAIROBI TRAFFIC CONTROL
+Green capacity = 20 | Congestion weight = 1.0 | Fairness weight = 8.0 | Starvation limit = 3
+
+--- COOPERATIVE SCHEDULING TRACE ---
+Round 1: Thika Road     | score=  53.0 | CONGESTION_PLUS_FAIRNESS | queue after green=25 | discharged=20 | wait=0
+Round 2: Waiyaki Way    | score=  51.0 | CONGESTION_PLUS_FAIRNESS | queue after green=15 | discharged=20 | wait=0
+Round 3: Mombasa Road   | score=  34.0 | FORCED_FAIRNESS        | queue after green= 0 | discharged=10 | wait=0
+Round 4: Ngong Road     | score=  44.0 | FORCED_FAIRNESS        | queue after green= 0 | discharged=12 | wait=0
+Round 5: Thika Road     | score=  62.0 | FORCED_FAIRNESS        | queue after green=18 | discharged=20 | wait=0
+Round 6: Waiyaki Way    | score=  58.0 | FORCED_FAIRNESS        | queue after green=14 | discharged=20 | wait=0
+Round 7: Mombasa Road   | score=  38.0 | FORCED_FAIRNESS        | queue after green= 0 | discharged=14 | wait=0
+Round 8: Ngong Road     | score=  32.0 | FORCED_FAIRNESS        | queue after green= 0 | discharged= 8 | wait=0
+
+--- FAIRNESS / THROUGHPUT SUMMARY ---
+Thika Road     | green periods=2 | vehicles served=40 | final queue=40 | coroutine status=dead
+Mombasa Road   | green periods=2 | vehicles served=24 | final queue=0 | coroutine status=dead
+Ngong Road     | green periods=2 | vehicles served=20 | final queue=0 | coroutine status=dead
+Waiyaki Way    | green periods=2 | vehicles served=40 | final queue=36 | coroutine status=dead
+
+Scheduling interpretation:
+1. Congestion increases a road's score, so larger queues normally receive more green periods.
+2. Waiting time adds a fairness bonus, so a quiet road becomes more competitive as it waits.
+3. At the starvation limit, a road is force-selected, preventing indefinite starvation.
+4. Because roads yield and are resumed by one scheduler, execution is interleaved cooperative concurrency, not parallel execution.
