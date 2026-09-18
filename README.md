@@ -1,2 +1,6 @@
-# group-6-assignment
-The repository is for programming languages assignment.
+MEMBERS: 
+
+BEDAN MAINA - C026-01-0737/2024
+TABITHA WANJIRU - C026-01-0899-2025
+EDMOND KIPCHUMBA - C026-01-
+NEWTON GITONGA
