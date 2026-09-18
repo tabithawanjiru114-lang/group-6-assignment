@@ -1,0 +1,63 @@
+UNIVERSITY LIBRARY BORROWING, FINES AND BOOK-STATE TRACKER
+Training constants: MAX_LOAN_DAYS = 14, CHARGE_PER_DAY = KSh 20
+[Static counter] totalLoans = 1 after successful borrow.
+[Static counter] totalLoans = 2 after successful borrow.
+[Static counter] totalLoans = 3 after successful borrow.
+[Static counter] totalLoans = 4 after successful borrow.
+
+=== TRANSACTION LOG ===
+ID   Type     Student     Book      Day     Fine      Result
+-----------------------------------------------------------------------------------------------
+1    BORROW   ST001       LIB001    1       KSh 0    SUCCESS - Borrow successful.
+2    BORROW   ST002       LIB001    1       KSh 0    SUCCESS - Borrow successful.
+3    BORROW   ST003       LIB001    2       KSh 0    FAILED - Borrow failed: no copy is available.
+4    RETURN   ST001       LIB001    18      KSh 60   SUCCESS - Return successful. Fine = KSh 60.00
+5    BORROW   ST003       LIB001    19      KSh 0    SUCCESS - Borrow successful.
+6    BORROW   ST004       LIB003    3       KSh 0    SUCCESS - Borrow successful.
+7    RETURN   ST004       LIB003    19      KSh 40   SUCCESS - Return successful. Fine = KSh 40.00
+8    RETURN   ST009       LIB003    19      KSh 0    FAILED - Return failed: no active loan exists for this borrower/book.
+9    BORROW   ST003       LIB009    20      KSh 0    FAILED - Book not found.
+
+=== CURRENT BOOK STOCK ===
+Accession Title                               Copies    Status
+------------------------------------------------------------------------
+LIB001    Introduction to C++                 0         No copies
+LIB002    Programming Languages Concepts      3         Available
+LIB003    Data Structures                     1         Available
+LIB004    Operating Systems                   2         Available
+LIB005    Database Systems                    2         Available
+LIB006    Computer Networks                   2         Available
+LIB007    Software Engineering                1         Available
+LIB008    Discrete Mathematics                2         Available
+
+=== SUMMARY ===
+Successful borrowing attempts: 4
+Failed borrowing attempts:     2
+Successful returns:             2
+Failed returns:                 1
+Total overdue charges:          KSh 100.00
+
+=== ALIASING EXPERIMENT ===
+Before modification: pointer view = 2, reference view = 2
+After modifying through pointer: pointer view = 1, reference view = 1
+Both names observe the same storage location/object.
+
+=== LIFETIME EXPERIMENT ===
+Dynamically allocated object created: DYN001
+Inside helper: object = DYN001, local searchIndex = 0
+Inside helper: object = DYN001, local searchIndex = 0
+The dynamically allocated Book is still alive after both calls.
+Dynamic Book released with delete; its lifetime has ended.
+
+=== L-VALUE / R-VALUE EXPERIMENT ===
+totalMark = catMark + practicalMark + examMark -> 76.00
+L-values here: totalMark is the destination storage location; each named variable can also denote a storage location.
+R-value expression: catMark + practicalMark + examMark produces the value assigned to totalMark.
+After examMark = examMark + 5, examMark = 47.00
+Left examMark is the l-value destination; right examMark is read as a value within the r-value expression.
+
+=== SCOPE / LIFETIME NOTES ===
+searchIndex: local to searchBook(), automatic lifetime; it is not visible after searchBook() returns.
+totalLoans: local name inside borrowBook(), but static lifetime lasts until program termination.
+dynamicBook's Book object: explicit heap-dynamic lifetime until delete, independent of helper-call scope.
+The pointer and reference in the aliasing experiment are two names referring to the same Book object.

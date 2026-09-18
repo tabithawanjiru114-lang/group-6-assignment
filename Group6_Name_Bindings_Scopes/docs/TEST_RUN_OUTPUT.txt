@@ -1,0 +1,10 @@
+GROUP 6 AUTOMATED TESTS
+[Static counter] totalLoans = 1 after successful borrow.
+PASS: Successful borrowing reduces available copies to zero.
+[Static counter] totalLoans = 2 after successful borrow.
+PASS: On-time return produces zero fine and restores stock.
+[Static counter] totalLoans = 3 after successful borrow.
+PASS: One overdue day charges exactly CHARGE_PER_DAY.
+PASS: Boundary/error: borrowing with zero copies is rejected.
+PASS: Boundary/error: return without an active loan is rejected.
+ALL AUTOMATED TESTS PASSED.
